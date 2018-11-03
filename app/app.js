@@ -4,20 +4,14 @@ import {render} from 'react-dom'
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import media from "./reducer";
-import {MediaLibrary, AvailableMedias, MediaFile} from "./components"
+import {MediaLibrary} from "./components/MediaLibrary"
 
 // Den Store erstellen
 const reducerInitializedStore  = createStore(media);
 
-
 const App = () => (
-    <MediaLibrary> // A Media Library
-        <AvailableMedias> // List of available media files
-            <MediaFile/> // One media file
-        </AvailableMedias>
-    </MediaLibrary>
+    <MediaLibrary />
 );
-
 
 render(
     <Provider store={reducerInitializedStore}>
