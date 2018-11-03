@@ -1,18 +1,27 @@
 import "@babel/polyfill";
-
 import React from 'react';
 import {render} from 'react-dom'
-import MediaApp from "../medias/react/Components/MediaApp";
-import {createStore, applyMiddleware} from 'redux'
-import {Provider} from 'react-redux'
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import media from "./reducer";
+import {MediaLibrary, AvailableMedias, MediaFile} from "./components"
 
-import reducer from '../medias/react/Reducers/index';
+// Den Store erstellen
+const reducerInitializedStore  = createStore(media);
 
-const reducerInitializedStore  = createStore(reducer);
+
+const App = () => (
+    <MediaLibrary> // A Media Library
+        <AvailableMedias> // List of available media files
+            <MediaFile/> // One media file
+        </AvailableMedias>
+    </MediaLibrary>
+);
+
 
 render(
     <Provider store={reducerInitializedStore}>
-        <MediaApp />
+        <App />
     </Provider>,
-    document.getElementById('mediaUpload')
+    document.getElementById('app')
 );
